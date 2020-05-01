@@ -91,7 +91,9 @@
   "main": "index.js",
   "types": "types/index.d.ts",
   "scripts": {
-    "test": "bash test/unit.sh && bash test/e2e.sh"
+    "test": "bash test/unit.sh && bash test/e2e.sh",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "keywords": [
     "cli",
@@ -187,7 +189,8 @@
     "sprintf-js": "1.1.1",
     "v8-compile-cache": "^2.0.0",
     "vizion": "~2.0.2",
-    "yamljs": "^0.3.0"
+    "yamljs": "^0.3.0",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "mocha": "^5.2.0",
@@ -200,5 +203,6 @@
     "type": "git",
     "url": "git://github.com/Unitech/pm2.git"
   },
-  "license": "AGPL-3.0"
+  "license": "AGPL-3.0",
+  "snyk": true
 }
