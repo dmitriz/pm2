@@ -15,7 +15,7 @@ touch e2e_time
 runTest ./test/e2e/cli/reload.sh
 runTest ./test/e2e/cli/start-app.sh
 runTest ./test/e2e/cli/operate-regex.sh
-runTest ./test/e2e/cli/interpreter.sh
+runTest ./test/e2e/cli/bun.sh
 runTest ./test/e2e/cli/app-configuration.sh
 runTest ./test/e2e/cli/binary.sh
 runTest ./test/e2e/cli/startOrX.sh
@@ -29,10 +29,16 @@ runTest ./test/e2e/cli/args.sh
 runTest ./test/e2e/cli/attach.sh
 runTest ./test/e2e/cli/serve.sh
 
-SUPV=`node -e "require('semver').lt(process.versions.node, '6.0.0') ? console.log('<6') : console.log('>6')"`
+SUPV6=`node -e "require('semver').lt(process.versions.node, '6.0.0') ? console.log('<6') : console.log('>6')"`
 
-if [ $SUPV = '<6' ]; then
+if [ $SUPV6 = '<6' ]; then
     exit
+fi
+
+SUPES=`node -e "require('semver').satisfies(process.versions.node, '>=13.3.0') ? console.log(true) : console.log(false)"`
+
+if [ $SUPES = 'true' ]; then
+    runTest ./test/e2e/esmodule.sh
 fi
 
 runTest ./test/e2e/cli/monit.sh
@@ -85,6 +91,8 @@ runTest ./test/e2e/logs/log-reload.sh
 runTest ./test/e2e/logs/log-entire.sh
 runTest ./test/e2e/logs/log-null.sh
 runTest ./test/e2e/logs/log-json.sh
+runTest ./test/e2e/logs/log-create-not-exist-dir.sh
+runTest ./test/e2e/logs/log-namespace.sh
 
 # MODULES
 runTest ./test/e2e/modules/get-set.sh

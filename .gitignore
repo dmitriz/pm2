@@ -10,7 +10,6 @@ test/child
 dist/
 *.deb
 *.rpm
-package-lock.json
 .DS_Store
 *.swp
 *.swo
@@ -22,3 +21,4 @@ yarn.lock
 e2e_time
 unit_time
 *.heapprofile
+a.out

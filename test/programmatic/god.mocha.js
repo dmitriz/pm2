@@ -85,12 +85,12 @@ describe('God', function() {
   });
 
   it('should have right properties', function() {
+    God.should.have.property('configuration');
     God.should.have.property('prepare');
     God.should.have.property('ping');
     God.should.have.property('dumpProcessList');
     God.should.have.property('getProcesses');
     God.should.have.property('getMonitorData');
-    God.should.have.property('getSystemData');
     God.should.have.property('getFormatedProcesses');
     God.should.have.property('checkProcess');
     God.should.have.property('reloadLogs');
